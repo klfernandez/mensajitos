@@ -1,0 +1,71 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Mensajitos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    #mensaje {
+      font-size: 22px;
+      margin-bottom: 20px;
+      opacity: 0;
+      transition: opacity 0.8s;
+    }
+    #mensaje.visible {
+      opacity: 1;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="mensaje"></div>
+  <button id="boton">muak</button>
+
+  <script>
+    let mensajes = [
+      "te quiero muchoooooooo",
+      "no estes tristeeeeeeeee",
+      "si sabes que te amo muchote?",
+      "ojala pudiera traspasar esta pantalla para abrazarte",
+      "te mando desde aqui un abrazo al alma",
+      "meper mites hacerte feliz por mucho tiempo?"
+    ];
+
+    let indice = 0;
+    let mensajeDiv = document.getElementById("mensaje");
+    let boton = document.getElementById("boton");
+
+    function mostrar() {
+      mensajeDiv.classList.remove("visible");
+      setTimeout(() => {
+        mensajeDiv.textContent = mensajes[indice];
+        mensajeDiv.classList.add("visible");
+        if (indice === mensajes.length - 1) {
+          boton.textContent = "TEPER MITO OWO";
+        }
+      }, 100);
+    }
+
+    boton.addEventListener("click", () => {
+      if (indice < mensajes.length - 1) {
+        indice++;
+        mostrar();
+      } else {
+        mensajeDiv.classList.remove("visible");
+        setTimeout(() => {
+          mensajeDiv.textContent = "ENTONCES SEAMOS FELICES MUCHO TIEMPO <3";
+          mensajeDiv.classList.add("visible");
+          boton.style.display = "none";
+        }, 100);
+      }
+    });
+    mostrar();
+  </script>
+</body>
+</html>
